@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Admininstration Page</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+</head>
+
+<body>
+  <header class="clearfix">
+    <section>
+      <h3>Barista</h3>
+      <% if (user.local.email) { %>
+        <p>
+          <strong>id</strong>:
+          <%= user._id %><br>
+            <strong>email</strong>:
+            <%= user.local.email %><br>
+            <strong>Revenue</strong>:
+            <%= user.local.bank %><br>
+        </p>
+
+    </section>
+    <section class="links">
+      <a href="/unlink/local" class="btn btn-default">Unlink</a>
+      <% } else { %>
+        <a href="/connect/local" class="btn btn-default">Connect Local</a>
+        <% } %>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </section>
+    <section class="profit">
+      <h2>Profit:</h2>
+      <span id="result">0</span>
+    </section>
+
+
+  </header>
+  <section class="container clearfix">
+    <section class="display">
+      <h3>Albums</h3>
+      <ul class="items">
+        <% for(var i=0; i<items.length; i++) {%>
+          <li class="item">
+            <span><%= items[i].album %></span>
+            <span><%= items[i].price %></span>
+            <span><%= items[i].quantity %></span>
+            <span><i class="fas fa-plus"></i></span>
+            <span><i class="fas fa-trash"></i></span>
+          </li>
+        <% } %>
+      </ul>
+    </section>
+    <!-- I need a form, to submit product name and quantity with a submit button, it can be 2 user inputs -->
+      <form class="" action="/admin" method="POST">
+        <input id="newAlbum" type="text" name="album" value="" placeholder="Album">
+        <input id="newPrice" type="text" name="price" value="" placeholder="Price">
+        <input id="submitNew" type="submit" name="" value="Submit Order">
+      </form>
+
+
+    <footer></footer>
+    <!-- <script src="main.js"></script> -->
+    <script src="main2.js"></script>
+
+</body>
+
+</html>
